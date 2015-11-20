@@ -64,3 +64,21 @@ for(i in 1:n){
 ## mean is used to give the frequency of occurence of TRUE values
 ##  from the statement given into parenthesis
 mean(abs(nil) >= mean.diff)
+
+###############
+## exercices ##
+###############
+## set.Set the seed at 1, then using a for-loop take a random sample of 5 mice 1,000 times.
+## Save these averages. What proportion of these 1,000 averages are
+## more than 1 gram away from the average of x ?
+set.seed(1)
+n <- 1000
+v <- vector(mode = 'numeric', length = n)
+for(i in 1:n){
+    tmp <- sample(x = unlist(femaleControlsPopulation), size = 50)
+    v[i] <- mean(tmp)
+}
+
+mean(abs(v - mean(x))  > 1)
+
+
