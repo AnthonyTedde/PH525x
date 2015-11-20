@@ -25,7 +25,7 @@ for(i in 1:length(data[, 'variable.name'])){
 control.mean <- mean(control)
 treatment.mean <- mean(treatment)
 
-mean.difference <- treatment.mean - control.mean
+mean.diff <- treatment.mean - control.mean
 
 
 #########################
@@ -41,20 +41,26 @@ mean.difference <- treatment.mean - control.mean
 ## We can replicate the previous experiment to construct a random variable
 ## called nil.
 
-## variable name
+## variables name
 sample <- c('sampleControl'
           , 'sampleTreatmentFake' )
+## length of the nil random variable
+n <- 1000
 ## nil: random variable for testing the null hypothesis
-nil <- vector(mode = "numeric", length = 12)
+nil <- vector(mode = "numeric", length = n)
 
-for(i in 1:1000){
-    sample.control <- sample(x = unlist(femaleControlsPopulation),
-                             size = 12)
-    sample.treatment.fake <- sample(x = unlist(female.control.population),
-                                    size = 12)
+## Treatment and control are made from the same population to controle
+## the fat diet effect.
+for(i in 1:n){
+    for(s in sample)
+        assign(s ,sample(x = unlist(femaleControlsPopulation),
+                         size = 12))
     ## abs is not yet used because as the two groups are alway the same
     ## the sign has a great importance.
-    nil[i] <- mean(sample.treatment.fake) - mean(sample.control)
+    nil[i] <- mean(sampleTreatmentFake) - mean(sampleControl)
 }
-mean(nil) ## [1] 1.037894
-mean(nil >= mean.difference)
+
+## p-value calculus:
+## mean is used to give the frequency of occurence of TRUE values
+##  from the statement given into parenthesis
+mean(abs(nil) >= mean.diff)
