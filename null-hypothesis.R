@@ -1,4 +1,5 @@
 library(dplyr)
+library(ggplot2)
 
 setwd(file.path('~/workspace/edx/HarvardX1/'))
 ## Data loaded by file are:
@@ -81,4 +82,19 @@ for(i in 1:n){
 
 mean(abs(v - mean(x))  > 1)
 
+## Gapminder package exercices
+library(gapminder)
+data(gapminder)
+head(gapminder)
 
+x <- gapminder[gapminder$year == 1952, ]
+## ggplot
+ggplot(data = x, aes(x = lifeExp)) +
+    geom_histogram() 
+
+## ecdf. proportion of countries in 1952 that have a life expectancy
+## less or equal to 40
+mean(x$lifeExp <= 40)
+## proportion of countries in 1052 that have a life expectancy
+## in between 40 and 60
+mean(x$lifeExp <= 60) - mean(x$lifeExp <= 40)
