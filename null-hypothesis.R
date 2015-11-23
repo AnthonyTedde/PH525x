@@ -77,3 +77,15 @@ plot(values,
      ecdf(nil)(values),
      typ = 'l')
 dev.off()
+
+## Same distribution curve with ggplot
+
+nil_df <- as.data.frame(nil)            #  transform nil from vector to df
+                                        # to be used into ggplot
+names(nil_df) <- 'avg'
+
+pdf('PH525x/ecdf-with-ggplot2.pdf')
+ggplot(nil_df,
+       aes(x = avg)) +
+    stat_ecdf()
+dev.off()
