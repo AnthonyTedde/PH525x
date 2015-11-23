@@ -103,3 +103,13 @@ ggplot(nil_df,
                colour = '#AA2222',
                size = 1)
 dev.off()
+
+
+## Conclusion ------------------------------
+
+## empirical p-value:
+mean(mean.diff < nil)
+## Approximation of p-value according to Normal distrib:
+1 - pnorm(mean.diff,
+          mean = mean(nil),
+          sd = sd(nil))
