@@ -89,3 +89,14 @@ ggplot(nil_df,
        aes(x = avg)) +
     stat_ecdf()
 dev.off()
+
+## probality distribution
+## with histogram representation
+
+pdf('PH525x/probability-distribution.pdf')
+ggplot(nil_df,
+       aes(x = avg)) +
+    geom_histogram(binwidth = 1,
+                   fill = '#22AA22',
+                   colour = '#222222')
+dev.off()
