@@ -98,5 +98,8 @@ ggplot(nil_df,
        aes(x = avg)) +
     geom_histogram(binwidth = 1,
                    fill = '#22AA22',
-                   colour = '#222222')
+                   colour = '#222222') +
+    geom_vline(aes(xintercept = mean.diff),
+               colour = '#AA2222',
+               size = 1)
 dev.off()
