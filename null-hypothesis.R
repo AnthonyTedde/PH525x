@@ -66,3 +66,14 @@ for(i in 1:n){
 ## mean is used to give the frequency of occurence of TRUE values
 ##  from the statement given into parenthesis
 mean(abs(nil) >= mean.diff)
+
+## Distribution ------------------------------
+bottom <- floor(min(nil))
+top <- ceiling(max(nil))
+values <- seq(bottom, top, len = 300)
+
+pdf('PH525x/ecdf-with-plot.pdf')
+plot(values,
+     ecdf(nil)(values),
+     typ = 'l')
+dev.off()
