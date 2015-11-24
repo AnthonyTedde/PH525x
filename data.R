@@ -11,7 +11,8 @@ url <- paste('https://raw.githubusercontent.com',
              sep = '/')
 ## list containing all files to be download
 files <- c('femaleControlsPopulation.csv',
-           'femaleMiceWeights.csv')
+           'femaleMiceWeights.csv',
+           'mice_pheno.csv')
 ## download all files specified in files list
 for(f in files){ 
     if(!file.exists(f))
